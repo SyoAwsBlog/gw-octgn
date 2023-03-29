@@ -229,7 +229,6 @@
     <cardaction menu="防御" shortcut="ctrl+B" batchExecute="batchBlock" />
     <cardaction menu="テキストの効果を使用する" shortcut="ctrl+Z" execute="activate" />
     <cardaction menu="カードをセットする" shortcut="ctrl+Q" execute="attach" />
-    <cardaction menu="変形する" shortcut="ctrl+F" execute="transform" />
     <cardaction menu="カード表面/裏面を切り替える" shortcut="ctrl+shift+F" execute="flip" />
     <cardaction menu="Manifest Card" execute="manifest" />
     <cardaction menu="Clone Card" shortcut="ctrl+C" batchExecute="clone" />

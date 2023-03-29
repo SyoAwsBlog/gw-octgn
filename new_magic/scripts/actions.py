@@ -104,14 +104,14 @@ def changePhase(args):
 #---------------------------------------------------------------------------
 
 def respond(group, x = 0, y = 0):
-    notify('{} RESPONDS!'.format(me))
+    notify('{} 反応した!'.format(me))
 
 def passPriority(group, x = 0, y = 0, autoscriptOverride = False):
     priorityList = eval(getGlobalVariable('priority'))
     if me._id in priorityList:
         priorityList.remove(me._id)
         setGlobalVariable('priority', str(priorityList))
-    notify('{} passes priority.'.format(me))
+    notify('{} パス（何もありません）'.format(me))
 
 def autoPass(group, x = 0, y = 0):
     mute()
@@ -174,7 +174,7 @@ def scoop(group, x = 0, y = 0):
     mute()
     if not confirm("Are you sure you want to scoop?"):
         return
-    me.life = 20
+    me.life = 10
     me.poison = 0
     me.white = 0
     me.blue = 0
@@ -202,7 +202,7 @@ def scoop(group, x = 0, y = 0):
     notify("{} scoops.".format(me))
 
 def clearAll(group, x = 0, y = 0):
-    notify("{} clears all targets and highlights.".format(me))
+    notify("{} 全てのターゲットとハイライトをクリアします。".format(me))
     for card in group:
 #        if card.targetedBy and card.targetedBy == me:    ### Commented out until target arrows are fixed
         if card.controller == me:
@@ -405,13 +405,13 @@ def scry(group = me.本国, x = 0, y = 0, count = None):
     dlg.bottomLabel = "本国の下から"
     dlg.text = "上から閲覧か、下から閲覧か、選択してください。\n\n(Windowを閉じると閲覧をキャンセルします)"
     if dlg.show() == None:
-        notify("{} has cancelled a scry for {}.".format(me, count))
+        notify("{} は{}枚の閲覧をキャンセルした ".format(me, count))
         return ## closing the dialog window will cancel the scry, not moving any cards, but peek status will stay on to prevent cheating.
     for c in reversed(dlg.list):
         c.moveTo(group)
     for c in dlg.bottomList:
         c.moveToBottom(group)
-    notify("{} scryed for {}, {} on top, {} on bottom.".format(me, count, len(dlg.list), len(dlg.bottomList)))
+    notify("{} は {}毎の閲覧をしました 上から{}枚、下から{}枚".format(me, count, len(dlg.list), len(dlg.bottomList)))
     group.visibility = "none"
 
 def play(card, x = 0, y = 0):
@@ -469,7 +469,7 @@ def play(card, x = 0, y = 0):
                         setGlobalVariable('cattach', str(cattach))
                         text += ", targeting {}".format(targetcard)
             ## If its a land, automatically resolve it
-            if re.search('Land', card.Type):
+            if re.search('Generation', card.Type):
                 resData = autoResolve(card)
                 if resData != "BREAK":
                     text += resData['text']
@@ -483,8 +483,8 @@ def play(card, x = 0, y = 0):
                     notify("{} casts {} (mode #{}){}{}.".format(me, card, modeTuple[0], srcText, text))
     else:
         src = card.group.name
-        if re.search("Instant", card.Type) or re.search("Sorcery", card.Type):
-            card.moveTo(card.owner.捨て山)
+        if re.search("Command", card.Type) or re.search("Sorcery", card.Type):
+            card.moveTo(card.owner.ジャンクヤード)
         else:
             card.moveToTable(defaultX, defaultY)
         notify("{} plays {} from their {}.".format(me, card, src))
@@ -573,7 +573,7 @@ def destroy(card, x = 0, y = 0):
             else:
                 card.moveTo(card.owner.捨て山)
             del stackDict[card]
-            notify("{}'s {} was countered.".format(me, card))
+            notify("{}'の {} は カウンターされました。".format(me, card))
         else:
             stackData = autoTrigger(card, 'destroy')
             if stackData != "BREAK":
@@ -593,14 +593,14 @@ def discard(card, x = 0, y = 0):
             text = ""
             if stackData != "BREAK":
                 text = stackData['text']
-            notify("{} discards {} from hand{}.".format(me, card, text))
+            notify("{} は {} を手札から捨て山に移動した。 {}".format(me, card, text))
             cardalign()
         else:
             card.moveTo(card.owner.捨て山)
-            notify("{} discards {} from {}.".format(me, card, src))
+            notify("{} は {} を{}から捨て山に移動した。".format(me, card, src))
     else:
         card.moveTo(card.owner.捨て山)
-        notify("{} discards {} from {}.".format(me, card, src))
+        notify("{} は {} を {}から捨て山に移動した。".format(me, card, src))
 
 def batchExile(cards, x = 0, y = 0):
     mute()
@@ -615,11 +615,11 @@ def exile(card, x = 0, y = 0):
         stackData = autoTrigger(card, 'exile')
         if stackData != "BREAK":
             card.moveTo(card.owner.piles['ジャンクヤード'])
-            notify("{} exiles {}{}.".format(me, card, stackData['text']))
+            notify("{} は{}を廃棄した {}.".format(me, card, stackData['text']))
     else:
         fromText = " from the battlefield" if src == table else " from their " + src.name
         card.moveTo(card.owner.piles['ジャンクヤード'])
-        notify("{} exiles {}{}.".format(me, card, fromText))
+        notify("{} は{}を廃棄した {}.".format(me, card, fromText))
 
 def batchAttack(cards, x = 0, y = 0):
     mute()

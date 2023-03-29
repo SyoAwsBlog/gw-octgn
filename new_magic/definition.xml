@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    id="A6C8D2E8-7CD8-11DD-8F94-E62B56D89593" version="3.6.3.2" octgnVersion="3.1.0.32" scriptVersion="3.1.0.2"
-    name="Magic the Gathering" tags="mtg" description="Magic: the Gathering plugin for OCTGN.&#xD;&#xD;Card images can be installed via the image downloader plugin in the OCTGN Deck Editor."
-    setsurl="https://github.com/brine/mtg-octgn" gameurl="http://brine.github.io/mtg-octgn/" authors="brine"
-    markersize="12" iconurl="https://raw.githubusercontent.com/brine/mtg-octgn/master/new_magic/art/logo.jpg" >
+    id="08D4EEAD-4DE8-4992-8D03-4A103889996E" version="0.0.0.1" octgnVersion="3.4.379.0" scriptVersion="3.1.0.2"
+    name="Gundam War" tags="gw" description="Gundam War plugin for OCTGN.&#xD;&#xD;Card images can be installed via the image downloader plugin in the OCTGN Deck Editor."
+    setsurl="https://github.com/brine/mtg-octgn" gameurl="http://brine.github.io/mtg-octgn/" authors="syo"
+    markersize="12" iconurl="https://www.4gamer.net/games/200/G020038/20130117072/SS/002.jpg" >
   <scripts>
     <script src="scripts/actions.py" />
     <script src="scripts/autoscript.py" />
@@ -151,29 +151,22 @@
   <proxygen definitionsrc="proxy/CardGenData.xml">
   </proxygen>
   <phases>
-    <phase name="Untap Step" icon="phases/untap.png" />
-    <phase name="Upkeep Step" icon="phases/upkeep.png" />
-    <phase name="Draw Step" icon="phases/draw.png" />
-    <phase name="Main Phase" icon="phases/main.png" />
-    <phase name="Beginning of Combat" icon="phases/combat.png" />
-    <phase name="Declare Attackers" icon="phases/attack.png" />
-    <phase name="Declare Blockers" icon="phases/block.png" />
-    <phase name="Damage Step" icon="phases/damage.png" />
-    <phase name="End of Combat" icon="phases/combat2.png" />
-    <phase name="Main Phase (2)" icon="phases/main2.png" />
-    <phase name="End Step" icon="phases/end.png" />
+    <phase name="ターン開始時" icon="phases/upkeep.png" />
+    <phase name="リロールフェイズ" icon="phases/untap.png" />
+    <phase name="ドローフェイズ" icon="phases/draw.png" />
+    <phase name="配備フェイズ" icon="phases/main.png" />
+    <phase name="攻撃ステップ（戦闘フェイズ）" icon="phases/attack.png" />
+    <phase name="防御ステップ（戦闘フェイズ）" icon="phases/block.png" />
+    <phase name="ダメージ判定ステップ（戦闘フェイズ）" icon="phases/damage.png" />
+    <phase name="帰還ステップ（戦闘フェイズ）" icon="phases/combat2.png" />
+    <phase name="ターン終了時" icon="phases/end.png" />
   </phases>
-    <documents>
-      <document name="MTG Rulebook" icon="documents/rules.png" src="documents/rules.txt" />
+  <documents>
+      <document name="GundamWar Rule" icon="documents/rules.png" src="documents/rules.txt" />
       <document name="Gameplay Help" icon="documents/help.png" src="documents/help.txt" />
   </documents>
   <gameModes>
     <gameMode name="Standard" shortDescription="" image="art/standard.jpg" playerCount="2" />
-    <gameMode name="Modern" shortDescription="" image="art/modern.jpg" playerCount="2" />
-    <gameMode name="Legacy" shortDescription="" image="art/legacy.jpg" playerCount="2" />
-    <gameMode name="Vintage" shortDescription="" image="art/vintage.jpg" playerCount="2" />
-    <gameMode name="1v1 Commander" shortDescription="" image="art/commander.jpg" playerCount="2" />
-    <gameMode name="Sealed/Limited" shortDescription="" image="art/sealed.jpg" playerCount="2" />
   </gameModes>
   <globalvariables>
     <globalvariable name="cattach" value="{ }"/>
@@ -192,6 +185,7 @@
     <property name="Rules" type="RichText" />
     <property name="Flavor" type="String" ignoreText="True" />
     <property name="Power" type="String" textKind="Enum" />
+    <property name="Shoot" type="String" textKind="Enum" />
     <property name="Toughness" type="String" textKind="Enum" />
     <property name="Loyalty" type="String" textKind="Enum" />
     <property name="Artist" type="String" ignoreText="True" />
@@ -205,212 +199,174 @@
   </card>
   <table name="Table" visibility="undefined" ordered="False" width="640" height="480" background="background/background.jpg" backgroundStyle="uniformToFill">
     <groupaction menu="Clean-up Targets and Combat" shortcut="esc" execute="clearAll" />
-    <groupaction menu="Untap All Permanents" shortcut="ctrl+U" execute="untapStep" />
-    <groupaction menu="Roll Die" shortcut="ctrl+R" execute="rollDie" />
-    <groupaction menu="Change Die" shortcut="ctrl+shift+R" execute="setDie" />
-    <groupaction menu="Create a Token..." shortcut="ctrl+shift+T" execute="token" />
-	<groupaction menu="Create a Dungeon..." execute="createDungeon" />
-    <groupaction menu="Pick a Random Card" execute="randomPick" />
-    <groupaction menu="Respond" shortcut="Enter" execute="respond" />
-    <groupaction menu="Pass Priority" shortcut="Tab" execute="passPriority" />
-    <groupaction menu="Auto-Pass Priority (Toggle)" shortcut="F6" execute="autoPass" />
+    <groupaction menu="永続的にリロール状態にする" shortcut="ctrl+U" execute="untapStep" />
+    <groupaction menu="コイン／ダイスを振る" shortcut="ctrl+R" execute="rollDie" />
+    <groupaction menu="コイン／ダイスを設定" shortcut="ctrl+shift+R" execute="setDie" />
+    <groupaction menu="コインを出す..." shortcut="ctrl+shift+T" execute="token" />
+    <groupaction menu="無作為にカードを選ぶ" execute="randomPick" />
+    <groupaction menu="破壊を無効にする" shortcut="Enter" execute="respond" />
+    <groupaction menu="手番をパスする" shortcut="Tab" execute="passPriority" />
+    <groupaction menu="自動「手番パス」の設定" shortcut="F6" execute="autoPass" />
     <groupaction menu="Scoop" shortcut="ctrl+shift+S" execute="scoop" />
-    <groupaction menu="Next Phase" shortcut="ctrl+x" execute="nextPhase" />
-    <groupactions menu="Phases / Steps...">
-      <groupaction menu="Jump to Untap/Upkeep Step" shortcut="F1" execute="goToUpkeep" />
-      <groupaction menu="Jump to First Main Phase" shortcut="F2" execute="goToFirstMain" />
-      <groupaction menu="Jump to Combat Phase" shortcut="F3" execute="goToCombat" />
-      <groupaction menu="Jump to Second Main Phase" shortcut="F4" execute="goToSecondMain" />
-      <groupaction menu="Jump to Ending Phase" shortcut="F5" execute="goToEnding" />
+    <groupaction menu="次フェーズへ移行する" shortcut="ctrl+x" execute="nextPhase" />
+    <groupactions menu="フェーズ / ステップ...">
+      <groupaction menu="リロールフェイズへ移行" shortcut="F1" execute="goToUpkeep" />
+      <groupaction menu="配備フェイズへ移行" shortcut="F2" execute="goToFirstMain" />
+      <groupaction menu="戦闘フェイズへ移行" shortcut="F3" execute="goToCombat" />
+      <groupaction menu="ターン終了時へ移行" shortcut="F5" execute="goToEnding" />
     </groupactions>
-    <groupaction menu="Lose 1 Life" shortcut="ctrl+Q" execute="lose1Life" />
-    <groupaction menu="Gain 1 Life" shortcut="ctrl+W" execute="gain1Life" />
+    <groupaction menu="汚染コインを得る" shortcut="ctrl+Q" execute="lose1Life" />
+    <groupaction menu="汚染コインを取り除く" shortcut="ctrl+W" execute="gain1Life" />
     <groupaction menu="Re-align Cards" execute="align" />
-	<groupaction menu="Change Automation Settings" execute="autoscriptMenu" />
-    <groupaction menu="View Update Log" execute="changeLog" />
-	<groupaction menu="Manage Secrets" execute="secrets" shortcut="ctrl+shift+e"/>
-    <cardaction menu="Tap/Untap or Resolve" default="True" batchExecute="batchResolve" />
-    <cardaction menu="Exert (Don't Untap Next Untap Step)" shortcut="ctrl+V" execute="exert" />
-    <cardaction menu="Keep Tapped During All Untap Steps" shortcut="ctrl+Shift+V" execute="doesNotUntap" />
-    <cardaction menu="Attack" shortcut="ctrl+A" batchExecute="batchAttack" />
-    <cardaction menu="Attack (with Vigilance)" shortcut="ctrl+shift+A" batchExecute="batchAttackWithoutTapping" />
-    <cardaction menu="Block" shortcut="ctrl+B" batchExecute="batchBlock" />
-    <cardaction menu="Use Activated Ability" shortcut="ctrl+Z" execute="activate" />
-    <cardaction menu="Attach to Targeted Card" shortcut="ctrl+Q" execute="attach" />
-    <cardaction menu="Morph/Transform/Flip Card" shortcut="ctrl+F" execute="transform" />
-    <cardaction menu="Turn Face-Up/Down" shortcut="ctrl+shift+F" execute="flip" />
+	<groupaction menu="設定変更：自動実行機能の選択" execute="autoscriptMenu" />
+    <groupaction menu="更新ログを表示" execute="changeLog" />
+	<groupaction menu="表示／非表示管理" execute="secrets" shortcut="ctrl+shift+e"/>
+    <cardaction menu="ロール/リロール 又は 解決" default="True" batchExecute="batchResolve" />
+    <cardaction menu="次回リロールフェイズにリロールしない" shortcut="ctrl+V" execute="exert" />
+    <cardaction menu="リロールフェイズにリロールしない" shortcut="ctrl+Shift+V" execute="doesNotUntap" />
+    <cardaction menu="攻撃" shortcut="ctrl+A" batchExecute="batchAttack" />
+    <cardaction menu="攻撃 (帰還時にロールしない)" shortcut="ctrl+shift+A" batchExecute="batchAttackWithoutTapping" />
+    <cardaction menu="防御" shortcut="ctrl+B" batchExecute="batchBlock" />
+    <cardaction menu="テキストの効果を使用する" shortcut="ctrl+Z" execute="activate" />
+    <cardaction menu="カードをセットする" shortcut="ctrl+Q" execute="attach" />
+    <cardaction menu="変形する" shortcut="ctrl+F" execute="transform" />
+    <cardaction menu="カード表面/裏面を切り替える" shortcut="ctrl+shift+F" execute="flip" />
     <cardaction menu="Manifest Card" execute="manifest" />
     <cardaction menu="Clone Card" shortcut="ctrl+C" batchExecute="clone" />
-    <cardaction menu="Destroy Card" shortcut="del" batchExecute="batchDestroy" />
+    <cardaction menu="カードを廃棄する" shortcut="del" batchExecute="batchDestroy" />
     <cardaction menu="Exile Card" shortcut="ctrl+E" batchExecute="batchExile" />
     <cardaction menu="Blink Card" shortcut="ctrl+shift+B" execute="blink" />
-    <cardaction menu="Move to Top of Libary" shortcut="ctrl+Y" execute="tolibrary" />
-    <cardaction menu="Move to X Position in Library" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
-    <cardaction menu="Shuffle Cards to Bottom of Library"  batchExecute="libraryBottomAllShuffle" />
-    <cardaction menu="Move to Hand" shortcut="ctrl+H" execute="tohand" />
-    <cardaction menu="Clear Card" shortcut="esc" execute="clear" />
-    <cardactions menu="Add/Remove Counters...">
+    <cardaction menu="本国の上に移動" shortcut="ctrl+Y" execute="tolibrary" />
+    <cardaction menu="本国に戻してシャッフルする" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
+    <cardaction menu="シャッフルして本国の下に戻す"  batchExecute="libraryBottomAllShuffle" />
+    <cardaction menu="手札に戻す" shortcut="ctrl+H" execute="tohand" />
+    <cardaction menu="カードの初期化" shortcut="esc" execute="clear" />
+    <cardactions menu="カウンターの操作...">
 		<cardaction menu="Auto-Add Counter" shortcut="ctrl+1" execute="autoAddMarker" />
-		<cardaction menu="Manually Assign Counters" shortcut="ctrl+shift+1" execute="manualAssignMarker" />
-		<cardaction menu="Smart-Copy Counter" shortcut="ctrl+2" execute="smartCopyMarker" />
-		<cardaction menu="Smart-Paste Counter" shortcut="ctrl+shift+2" execute="smartPasteMarker" />
+		<cardaction menu="手動カウンターの割当" shortcut="ctrl+shift+1" execute="manualAssignMarker" />
+		<cardaction menu="カウンターのコピー" shortcut="ctrl+2" execute="smartCopyMarker" />
+		<cardaction menu="カウンターのペースト" shortcut="ctrl+shift+2" execute="smartPasteMarker" />
 		<cardseparator />
-		<cardaction menu="Add +1/+1 Counter" shortcut="ctrl+3" execute="addPlusOneMarker" />
-		<cardaction menu="Add -1/-1 Counter" shortcut="ctrl+shift+3" execute="addMinusOneMarker" />
+		<cardaction menu="カウンターに +1/+1/+1 を追加" shortcut="ctrl+3" execute="addPlusOneMarker" />
+		<cardaction menu="カウンターに -1/-1/-1 を追加" shortcut="ctrl+shift+3" execute="addMinusOneMarker" />
 		<cardaction menu="Add Charge Counter" shortcut="ctrl+4" execute="addChargeMarker" />
-		<cardaction menu="Add Other Counter..." shortcut="ctrl+0" batchExecute="addMarker" />
-		<cardaction menu="Mark as Commander" shortcut="ctrl+shift+c" execute="commanderToggle" />
+		<cardaction menu="別のカウンターを追加..." shortcut="ctrl+0" batchExecute="addMarker" />
+		<cardaction menu="効果の対象としてマークする" shortcut="ctrl+shift+c" execute="commanderToggle" />
     </cardactions>
-	<cardactions menu="Auto-Token..." >
-		<cardaction menu="Auto-Create Token" shortcut="ctrl+shift+T" execute="autoFindToken" />
-		<cardaction menu="Manually Assign Token" execute="manualAssignToken" />
-		<cardaction menu="Swap Token Art" execute="nextTokenArt" />
+	<cardactions menu="コイン生成..." >
+		<cardaction menu="コインを場に出す" shortcut="ctrl+shift+T" execute="autoFindToken" />
+		<cardaction menu="手動でコインを割り当てる" execute="manualAssignToken" />
+		<cardaction menu="コインの画像を変更" execute="nextTokenArt" />
 	</cardactions>
     <cardaction menu="Align Card" batchExecute="alignCard" />
     <cardaction menu="Check Card Rulings (on Gatherer)" execute="rulings" />
   </table>
-  <player summary="L{#Life}|P{#Poison}|H{#Hand}|C{#General}">
-    <counter name="Life" icon="counters/life.png" default="20" />
-    <counter name="Poison" icon="counters/poison.png" />
-    <counter name="Energy" icon="counters/energy.png" />
-    <counter name="White" icon="counters/white.png" />
-    <counter name="Blue" icon="counters/blue.png" />
-    <counter name="Black" icon="counters/black.png" />
-    <counter name="Red" icon="counters/red.png" />
-    <counter name="Green" icon="counters/green.png" />
-    <counter name="Colorless" icon="counters/colorless.png" />
+  <player summary="手札{#手札}|本国{#本国}|捨て山{#捨て山}|ジャンクヤード{#ジャンクヤード}|ゲーム除外{#ゲーム除外}|汚染コイン{#汚染コイン}">
+    <counter name="汚染コイン" icon="counters/life.png" default="10" />
+    <counter name="白" icon="counters/white.png" />
+    <counter name="青" icon="counters/blue.png" />
+    <counter name="黒" icon="counters/black.png" />
+    <counter name="赤" icon="counters/red.png" />
+    <counter name="緑" icon="counters/green.png" />
+    <counter name="紫" icon="counters/colorless.png" />
     <counter name="General" icon="counters/general.png" />
     <counter name="Experience" icon="counters/exp.png" />
 	<globalvariable name="f6" value="False" />
     <globalvariable name="secrets" value=""/>
-    <group viewState="expanded" name="Hand" shortcut="ctrl+H" visibility="me" icon="groups/hand.png">
-      <cardaction menu="Cast Spell" default="True" shortcut="ctrl+c" execute="play" />
-      <cardaction menu="Cast Face-Down (Morph)" shortcut="ctrl+F" execute="morph" />
+    <group viewState="expanded" name="手札" shortcut="ctrl+H" visibility="me" icon="groups/hand.png">
+      <cardaction menu="コマンドを使う" default="True" shortcut="ctrl+c" execute="play" />
+      <cardaction menu="カードを裏面にして出す" shortcut="ctrl+F" execute="morph" />
       <cardaction menu="Suspend Card" execute="suspend" />
-      <cardaction menu="Discard Card" shortcut="del" execute="discard" />
-      <cardaction menu="Exile Card" shortcut="ctrl+E" execute="exile" />
-      <cardaction menu="Return to Library" shortcut="ctrl+Y" execute="tolibrary" />
-      <cardaction menu="Move to X Position in Library" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
-      <cardaction menu="Submit Tags" execute="submitTags" />
-      <groupaction menu="Mulligan" shortcut="ctrl+M" execute="mulligan" />
-      <groupaction menu="Random Discard" execute="randomDiscard" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Library (Top)" execute="libraryTopAll" />
-        <groupaction menu="Owner's Library (Bottom)" execute="libraryBottomAll" />
-        <groupaction menu="Owner's Graveyard" execute="graveyardAll" />
-        <groupaction menu="Owner's Exiled Zone" execute="exileAll" />
+      <cardaction menu="捨て山" shortcut="del" execute="discard" />
+      <cardaction menu="カードを取り除く" shortcut="ctrl+E" execute="exile" />
+      <cardaction menu="本国へ戻す" shortcut="ctrl+Y" execute="tolibrary" />
+      <cardaction menu="本国のＸ毎目に戻す" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
+      <cardaction menu="効果の対象をタグ付けする" execute="submitTags" />
+      <groupaction menu="マリガンする" shortcut="ctrl+M" execute="mulligan" />
+      <groupaction menu="無作為に廃棄する" execute="randomDiscard" />
+      <groupactions menu="全てのカード...">
+        <groupaction menu="自軍本国の上へ移動" execute="libraryTopAll" />
+        <groupaction menu="自軍本国の下へ移動" execute="libraryBottomAll" />
+        <groupaction menu="自軍捨て山へ移動" execute="graveyardAll" />
+        <groupaction menu="自軍ジャンクヤードへ移動" execute="exileAll" />
       </groupactions>
     </group>
-    <group name="Library" shortcut="ctrl+I" visibility="none" icon="groups/library.png">
-      <groupaction menu="Scry" shortcut="ctrl+shift+C" execute="scry" />
-      <groupaction menu="Draw" shortcut="ctrl+D" default="True" execute="draw" />
-      <groupaction menu="Draw X Cards" shortcut="ctrl+shift+D" execute="drawMany" />
-      <groupaction menu="Mill X Cards" execute="mill" />
-      <groupaction menu="Exile X Cards" execute="exileMany" />
-      <groupaction menu="Shuffle" shortcut="ctrl+S" execute="shuffle" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Graveyard" execute="graveyardAll" />
-        <groupaction menu="Owner's Exiled Zone" execute="exileAll" />
-        <groupaction menu="Owner's Command Zone" execute="commandAll" />
-        <groupaction menu="Owner's Planes/Schemes (top)" execute="planesTopAll" />
-        <groupaction menu="Owner's Planes/Schemes (bottom)" execute="planesBottomAll" />
-        <groupaction menu="Owner's Sideboard" execute="sideboardAll" />
+    <group name="本国" shortcut="ctrl+I" visibility="none" icon="groups/library.png">
+      <groupaction menu="本国をＸ枚閲覧する" shortcut="ctrl+shift+C" execute="scry" />
+      <groupaction menu="ドロー(1枚)" shortcut="ctrl+D" default="True" execute="draw" />
+      <groupaction menu="ドロー(X枚)" shortcut="ctrl+shift+D" execute="drawMany" />
+      <groupaction menu="捨て山へ X 枚を移動" execute="mill" />
+      <groupaction menu="ジャンクヤードへX枚を移動" execute="exileMany" />
+      <groupaction menu="シャッフル" shortcut="ctrl+S" execute="shuffle" />
+      <groupactions menu="全てのカード...">
+        <groupaction menu="自軍捨て山に移動" execute="graveyardAll" />
+        <groupaction menu="自軍ジャンクヤードへ移動" execute="exileAll" />
+        <groupaction menu="自軍取り除きへ移動" execute="commandAll" />
+        <groupaction menu="自軍サイドボードに移動する" execute="sideboardAll" />
       </groupactions>
-      <cardaction menu="Cast Card" shortcut="ctrl+C" execute="play" />
-      <cardaction menu="Cast Face-Down (Morph)" shortcut="ctrl+F" execute="morph" />
-      <cardaction menu="Manifest Card" execute="manifest" />
-      <cardaction menu="Discard Card" shortcut="del" execute="discard" />
-      <cardaction menu="Exile Card" shortcut="ctrl+E" execute="exile" />
-      <cardaction menu="Move Card to Hand" default="True" shortcut="ctrl+H" execute="tohand" />
-      <groupaction menu="Reveal/Hide Card" shortcut="ctrl+R" execute="revealtoplibrary" />
-      <groupaction menu="Load Jumpstart Deck" execute="loadJumpstart" />
+      <cardaction menu="カードを場に出す" shortcut="ctrl+C" execute="play" />
+      <cardaction menu="カードを裏面にして場に出す" shortcut="ctrl+F" execute="morph" />
+      <cardaction menu="カードを表面にする" execute="manifest" />
+      <cardaction menu="捨て山へ1枚を移動" shortcut="del" execute="discard" />
+      <cardaction menu="ジャンクヤードへ1枚を移動" shortcut="ctrl+E" execute="exile" />
+      <cardaction menu="1枚引く" default="True" shortcut="ctrl+H" execute="tohand" />
+      <groupaction menu="1枚めくって公開する" shortcut="ctrl+R" execute="revealtoplibrary" />
+      <groupaction menu="デッキ読み込み(短縮)" execute="loadJumpstart" />
     </group>
-    <group name="Graveyard" shortcut="del" visibility="all" icon="groups/graveyard.png">
-      <groupaction menu="Pick a Random Card" shortcut="ctrl+R" execute="randomPick" />
-      <groupaction menu="Shuffle" execute="shuffle" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Library (Top)" execute="libraryTopAll" />
-        <groupaction menu="Owner's Library (Bottom)" execute="libraryBottomAll" />
-        <groupaction menu="Owner's Exiled Zone" execute="exileAll" />
-        <groupaction menu="Owner's Command Zone" execute="commandAll" />
-        <groupaction menu="Owner's Planes/Schemes (top)" execute="planesTopAll" />
-        <groupaction menu="Owner's Planes/Schemes (bottom)" execute="planesBottomAll" />
-        <groupaction menu="Owner's Sideboard" execute="sideboardAll" />
+    <group name="捨て山" shortcut="del" visibility="none" icon="groups/graveyard.png">
+      <groupaction menu="無作為に1枚選ぶ" shortcut="ctrl+R" execute="randomPick" />
+      <groupaction menu="シャッフル" execute="shuffle" />
+      <groupactions menu="全てのカード...">
+        <groupaction menu="自軍本国の上へ移動" execute="libraryTopAll" />
+        <groupaction menu="自軍本国の下へ移動" execute="libraryBottomAll" />
+        <groupaction menu="自軍ジャンクヤードへ移動" execute="exileAll" />
+        <groupaction menu="自軍取り除きへ移動" execute="commandAll" />
       </groupactions>
-      <cardaction menu="Move Card to Hand" shortcut="ctrl+H" execute="tohand" />
-      <cardaction menu="Exile Card" shortcut="ctrl+E" execute="exile" />
-      <cardaction menu="Cast Card" default="True" shortcut="ctrl+c" execute="play" />
-      <cardaction menu="Cast Card (Flashback)" shortcut="ctrl+F" execute="flashback" />
-      <cardaction menu="Cast Face-Down (Morph)" shortcut="ctrl+shift+F" execute="morph" />
-      <cardaction menu="Use Activated Ability" shortcut="ctrl+Z" execute="activate" />
-      <cardaction menu="Manifest Card" execute="manifest" />
-      <cardaction menu="Move Card to Library" shortcut="ctrl+Y" execute="tolibrary" />
-      <cardaction menu="Move to X Position in Library" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
-      <cardaction menu="Submit Tags" execute="submitTags" />
+      <cardaction menu="手札へ移動する" shortcut="ctrl+H" execute="tohand" />
+      <cardaction menu="ジャンクヤードへ移動する" shortcut="ctrl+E" execute="exile" />
+      <cardaction menu="カードを場に出す（表面）" default="True" shortcut="ctrl+c" execute="play" />
+      <cardaction menu="カードを場に出す（裏面）" shortcut="ctrl+F" execute="flashback" />
+      <cardaction menu="テキストの効果を使う" shortcut="ctrl+Z" execute="activate" />
+      <cardaction menu="カードを表面にする" execute="manifest" />
+      <cardaction menu="本国へ移動する" shortcut="ctrl+Y" execute="tolibrary" />
+      <cardaction menu="本国のＸ枚目に移動する" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
+      <cardaction menu="効果の対象をタグ付けする" execute="submitTags" />
     </group>
-    <group name="Exiled Zone" shortcut="ctrl+E" visibility="all" icon="groups/removed.png" viewState="collapsed">
-      <groupaction menu="Shuffle" execute="shuffle" />
-      <groupaction menu="Pick a Random Card" shortcut="ctrl+R" execute="randomPick" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Library (Top)" execute="libraryTopAll" />
-        <groupaction menu="Owner's Library (Bottom)" execute="libraryBottomAll" />
-        <groupaction menu="Owner's Graveyard" execute="graveyardAll" />
-        <groupaction menu="Owner's Command Zone" execute="commandAll" />
-        <groupaction menu="Owner's Planes/Schemes (top)" execute="planesTopAll" />
-        <groupaction menu="Owner's Planes/Schemes (bottom)" execute="planesBottomAll" />
-        <groupaction menu="Owner's Sideboard" execute="sideboardAll" />
+    <group name="ジャンクヤード" shortcut="ctrl+E" visibility="all" icon="groups/removed.png" viewState="collapsed">
+      <groupaction menu="シャッフル" execute="shuffle" />
+      <groupaction menu="無作為に1枚選ぶ" shortcut="ctrl+R" execute="randomPick" />
+      <groupactions menu="全てのカード...">
+        <groupaction menu="自軍本国の上へ移動" execute="libraryTopAll" />
+        <groupaction menu="自軍本国の下へ移動" execute="libraryBottomAll" />
+        <groupaction menu="自軍本国の捨て山へ移動" execute="graveyardAll" />
+        <groupaction menu="自軍取り除きへ移動" execute="commandAll" />
       </groupactions>
-      <cardaction menu="Cast Card" default="True" shortcut="ctrl+c" execute="play" />
-      <cardaction menu="Move Card to Hand" shortcut="ctrl+H" execute="tohand" />
-      <cardaction menu="Discard Card" shortcut="del" execute="discard" /> 
-      <cardaction menu="Cast Face-Down (Morph)" shortcut="ctrl+f" execute="morph" />
-      <cardaction menu="Manifest Card" execute="manifest" />
-      <cardaction menu="Move Card to Library" shortcut="ctrl+Y" execute="tolibrary" /> 
-      <cardaction menu="Move to X Position in Library" shortcut="ctrl+shift+Y" execute="tolibraryposition" />      
+      <cardaction menu="カードを場に出す" default="True" shortcut="ctrl+c" execute="play" />
+      <cardaction menu="カードを手札に移動する" shortcut="ctrl+H" execute="tohand" />
+      <cardaction menu="カードを捨て山に移動する" shortcut="del" execute="discard" /> 
+      <cardaction menu="カードを場に出す（裏面）" shortcut="ctrl+f" execute="morph" />
+      <cardaction menu="カードを表面にする" execute="manifest" />
+      <cardaction menu="本国へ移動する" shortcut="ctrl+Y" execute="tolibrary" /> 
+      <cardaction menu="本国のＸ枚目に移動する" shortcut="ctrl+shift+Y" execute="tolibraryposition" />      
     </group>
-    <group name="Sideboard" visibility="me" icon="groups/sideboard.png" viewState="collapsed">
-      <groupaction menu="Shuffle" execute="shuffle" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Library (Top)" execute="libraryTopAll" />
-        <groupaction menu="Owner's Library (Bottom)" execute="libraryBottomAll" />
-        <groupaction menu="Owner's Graveyard" execute="graveyardAll" />
-        <groupaction menu="Owner's Exiled Zone" execute="exileAll" />
-        <groupaction menu="Owner's Command Zone" execute="commandAll" />
-        <groupaction menu="Owner's Planes/Schemes (top)" execute="planesTopAll" />
-        <groupaction menu="Owner's Planes/Schemes (bottom)" execute="planesBottomAll" />
+    <group name="ゲーム除外" visibility="all" icon="groups/commandzone.png" viewState="collapsed">
+      <groupaction menu="シャッフル" execute="shuffle" />
+      <groupactions menu="全てのカード...">
+        <groupaction menu="自軍本国の上へ移動" execute="libraryTopAll" />
+        <groupaction menu="自軍本国の下へ移動" execute="libraryBottomAll" />
       </groupactions>
     </group>
-    <group name="Command Zone" visibility="all" icon="groups/commandzone.png" viewState="collapsed">
-      <groupaction menu="Shuffle" execute="shuffle" />
-      <cardaction menu="Cast as Commander" default="True" execute="playCommander" />
-      <cardaction menu="Cast Card" shortcut="ctrl+C" execute="play" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Library (Top)" execute="libraryTopAll" />
-        <groupaction menu="Owner's Library (Bottom)" execute="libraryBottomAll" />
-        <groupaction menu="Owner's Graveyard" execute="graveyardAll" />
-        <groupaction menu="Owner's Exiled Zone" execute="exileAll" />
-        <groupaction menu="Owner's Planes/Schemes (top)" execute="planesTopAll" />
-        <groupaction menu="Owner's Planes/Schemes (bottom)" execute="planesBottomAll" />
-        <groupaction menu="Owner's Sideboard" execute="sideboardAll" />
-      </groupactions>
-    </group>
-    <group name="Planes/Schemes" visibility="none" icon="groups/removed.png" viewState="collapsed">
-      <groupaction menu="Shuffle" execute="shuffle" />
-      <cardaction menu="Play Card" default="True" execute="play" />
-      <groupactions menu="Move All Cards To...">
-        <groupaction menu="Owner's Library (Top)" execute="libraryTopAll" />
-        <groupaction menu="Owner's Library (Bottom)" execute="libraryBottomAll" />
-        <groupaction menu="Owner's Graveyard" execute="graveyardAll" />
-        <groupaction menu="Owner's Exiled Zone" execute="exileAll" />
-        <groupaction menu="Owner's Command Zone" execute="commandAll" />
-        <groupaction menu="Owner's Sideboard" execute="sideboardAll" />
+    <group name="サイドボード" visibility="me" icon="groups/sideboard.png" viewState="collapsed">
+      <groupaction menu="シャッフル" execute="shuffle" />
+      <groupactions menu="全てのカード...">
+        <groupaction menu="自軍本国の上へ移動" execute="libraryTopAll" />
+        <groupaction menu="自軍本国の下へ移動" execute="libraryBottomAll" />
       </groupactions>
     </group>
   </player>
   <deck>
-    <section name="Main" group="Library" />
-    <section name="Sideboard" group="Sideboard" />
-    <section name="Command Zone" group="Command Zone" />
-    <section name="Planes/Schemes" group="Planes/Schemes" />
+    <section name="Main" group="本国" />
+    <section name="サイドボード" group="サイドボード" />
+    <section name="ゲーム除外" group="ゲーム除外" />
   </deck>
 </game>

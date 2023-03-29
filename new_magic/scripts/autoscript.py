@@ -277,7 +277,7 @@ def cardcount(card, stackData, search):
         addmarker = counters[marker]
         qty = card.markers[addmarker]
     elif search == "ask":
-        qty = askInteger("What is X?", 0)
+        qty = askInteger("X�́A�����ł���?", 0)
         if qty == None:
             qty = 0
     else:
@@ -621,34 +621,34 @@ def autoundying(card):
         return ""
 
 def automoveto(card, pile):
-    n = rnd(0, len(card.owner.Library)) #we need to delay scripts here, might as well find n for shuffle
+    n = rnd(0, len(card.owner.本国)) #we need to delay scripts here, might as well find n for shuffle
     try:
         pos = int(pile)
-        card.moveTo(card.owner.Library, pos)
+        card.moveTo(card.owner.本国, pos)
         if pos == 0:
             text = "top of Library"
         else:
             text = "{} from top of Library".format(pos)
     except:
         if re.search(r'bottom', pile):
-            card.moveToBottom(card.owner.Library)
+            card.moveToBottom(card.owner.本国)
             text = "bottom of library"
         elif re.search(r'shuffle', pile):
-            card.moveTo(card.owner.Library, n)
-            shuffle(card.owner.Library, silence = True)
+            card.moveTo(card.owner.本国, n)
+            shuffle(card.owner.本国, silence = True)
             text = "shuffled into Library"
         elif re.search(r'exile', pile):
             stackData = autoTrigger(card, 'exile')
             if stackData == "BREAK":
                 return ''
-            card.moveTo(card.owner.piles['Exiled Zone'])
+            card.moveTo(card.owner.piles['ジャンクヤード'])
             text = "exile" + stackData['text']
-        elif re.search(r'hand', pile):
-            stackData = autoTrigger(card, 'hand')
+        elif re.search(r'手札', pile):
+            stackData = autoTrigger(card, '手札')
             if stackData == "BREAK":
                 return ''
-            card.moveTo(card.owner.hand)
-            text = "hand" + stackData['text']
+            card.moveTo(card.owner.手札)
+            text = "手札" + stackData['text']
         elif re.search(r'graveyard', pile):
             stackData = autoTrigger(card, 'destroy')
             if stackData == "BREAK":

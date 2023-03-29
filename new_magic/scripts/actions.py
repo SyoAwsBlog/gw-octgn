@@ -185,19 +185,19 @@ def scoop(group, x = 0, y = 0):
     me.general = 0
     me.experience = 0
     me.energy = 0
-    for card in me.Library:
-        card.moveTo(card.owner.Library)
+    for card in me.本国:
+        card.moveTo(card.owner.本国)
     myCards = (card for card in table
         if card.controller == me)
     for card in myCards:
-        card.moveTo(card.owner.Library)
-    for card in me.Graveyard:
-        card.moveTo(card.owner.Library)
-    for card in me.hand:
-        card.moveTo(card.owner.Library)
-    exile = me.piles['Exiled Zone']
+        card.moveTo(card.owner.本国)
+    for card in me.捨て山:
+        card.moveTo(card.owner.本国)
+    for card in me.手札:
+        card.moveTo(card.owner.本国)
+    exile = me.piles['ジャンクヤード']
     for card in exile:
-        card.moveTo(card.owner.Library)
+        card.moveTo(card.owner.本国)
     setGlobalVariable("cattach", "{ }")
     notify("{} scoops.".format(me))
 
@@ -216,7 +216,7 @@ def clearAll(group, x = 0, y = 0):
 def setDie(group, x = 0, y = 0):
     mute()
     global diesides
-    num = askInteger("How many sides?\n\nFor Coin, enter 2.\nFor Chaos die, enter 6.", diesides)
+    num = askInteger("何面ですか?\n\nコインならば、「2」を入力\nサイコロ（６面）ならば「6」を入力", diesides)
     if num != None and num > 0:
         diesides = num
         dieFunct(diesides)
@@ -388,10 +388,10 @@ def createDungeon(group, x = 0, y = 0):
 # Autoscript-Linked Card functions
 #--------------------------------
 
-def scry(group = me.Library, x = 0, y = 0, count = None):
+def scry(group = me.本国, x = 0, y = 0, count = None):
     mute()
     if count == None:
-        count = askInteger("Scry how many cards?", 1)
+        count = askInteger("何枚のカードを閲覧しますか?", 1)
     if count == None or count == 0:
         return
     topCards = []
@@ -400,10 +400,10 @@ def scry(group = me.Library, x = 0, y = 0, count = None):
         c.peek()
     dlg = cardDlg(topCards, [])
     dlg.max = count
-    dlg.title = "Scry"
-    dlg.label = "Top of Library"
-    dlg.bottomLabel = "Bottom of Library"
-    dlg.text = "Reorder scryed cards to the top or bottom.\n\n(Close window to cancel scry.)"
+    dlg.title = "閲覧"
+    dlg.label = "本国の上から"
+    dlg.bottomLabel = "本国の下から"
+    dlg.text = "上から閲覧か、下から閲覧か、選択してください。\n\n(Windowを閉じると閲覧をキャンセルします)"
     if dlg.show() == None:
         notify("{} has cancelled a scry for {}.".format(me, count))
         return ## closing the dialog window will cancel the scry, not moving any cards, but peek status will stay on to prevent cheating.
@@ -419,7 +419,7 @@ def play(card, x = 0, y = 0):
     text = ''
     if autoscriptCheck():
         src = card.group
-        if src == me.hand:
+        if src == me.手札:
             srcText = ""
         else:
             srcText = " from {}".format(card.group.name)
@@ -429,7 +429,7 @@ def play(card, x = 0, y = 0):
                           card.alternateProperty('splitB', 'Rules')]
             splitFlags = ['A','B']
             ## splitC is the fused split card
-            if re.search("Fuse", card.Rules) and src == me.hand:
+            if re.search("Fuse", card.Rules) and src == me.手札:
                 splitRules.append('Fuse both sides')
                 splitFlags.append('C')
             choice = askChoice('Cast which side of {}?'.format(card.name), splitRules)
@@ -484,7 +484,7 @@ def play(card, x = 0, y = 0):
     else:
         src = card.group.name
         if re.search("Instant", card.Type) or re.search("Sorcery", card.Type):
-            card.moveTo(card.owner.Graveyard)
+            card.moveTo(card.owner.捨て山)
         else:
             card.moveToTable(defaultX, defaultY)
         notify("{} plays {} from their {}.".format(me, card, src))
@@ -532,7 +532,7 @@ def resolve(card):
             stackData = autoResolve(card)
             if stackData == "BREAK": return
             if stackData['class'] == 'miracle':
-                if stackData['src'] in me.hand:
+                if stackData['src'] in me.手札:
                     play(stackData['src'])
                 else:
                     notify("{}'s {} Miracle trigger is countered (no longer in hand.)".format(me, card))
@@ -569,26 +569,26 @@ def destroy(card, x = 0, y = 0):
         global stackDict
         if card in stackDict: #Destroying a card on a stack is considered countering that spell
             if stackDict[card]['moveto'] == 'exile':
-                card.moveTo(card.owner.piles['Exiled Zone'])
+                card.moveTo(card.owner.piles['ジャンクヤード'])
             else:
-                card.moveTo(card.owner.Graveyard)
+                card.moveTo(card.owner.捨て山)
             del stackDict[card]
             notify("{}'s {} was countered.".format(me, card))
         else:
             stackData = autoTrigger(card, 'destroy')
             if stackData != "BREAK":
-                card.moveTo(card.owner.Graveyard)
+                card.moveTo(card.owner.捨て山)
                 notify("{} destroys {}{}.".format(me, card, stackData['text']))
     else:
-        card.moveTo(card.owner.Graveyard)
+        card.moveTo(card.owner.捨て山)
         notify("{} destroys {}.".format(me, card))
 
 def discard(card, x = 0, y = 0):
     mute()
     src = card.group
     if autoscriptCheck():
-        if src == me.hand:  ## Only run discard scripts if the card is discarded from hand
-            card.moveTo(card.owner.Graveyard)
+        if src == me.手札:  ## Only run discard scripts if the card is discarded from hand
+            card.moveTo(card.owner.捨て山)
             stackData = autoTrigger(card, 'discard')
             text = ""
             if stackData != "BREAK":
@@ -596,10 +596,10 @@ def discard(card, x = 0, y = 0):
             notify("{} discards {} from hand{}.".format(me, card, text))
             cardalign()
         else:
-            card.moveTo(card.owner.Graveyard)
+            card.moveTo(card.owner.捨て山)
             notify("{} discards {} from {}.".format(me, card, src))
     else:
-        card.moveTo(card.owner.Graveyard)
+        card.moveTo(card.owner.捨て山)
         notify("{} discards {} from {}.".format(me, card, src))
 
 def batchExile(cards, x = 0, y = 0):
@@ -614,11 +614,11 @@ def exile(card, x = 0, y = 0):
     if autoscriptCheck() and src == table:
         stackData = autoTrigger(card, 'exile')
         if stackData != "BREAK":
-            card.moveTo(card.owner.piles['Exiled Zone'])
+            card.moveTo(card.owner.piles['ジャンクヤード'])
             notify("{} exiles {}{}.".format(me, card, stackData['text']))
     else:
         fromText = " from the battlefield" if src == table else " from their " + src.name
-        card.moveTo(card.owner.piles['Exiled Zone'])
+        card.moveTo(card.owner.piles['ジャンクヤード'])
         notify("{} exiles {}{}.".format(me, card, fromText))
 
 def batchAttack(cards, x = 0, y = 0):
@@ -814,7 +814,7 @@ def blink(card, x = 0, y = 0):
             exileData = autoTrigger(card, 'exile')
             if exileData == "BREAK":
                 return
-            card.moveTo(card.owner.piles['Exiled Zone'])
+            card.moveTo(card.owner.piles['ジャンクヤード'])
             card.moveToTable(defaultX, defaultY)
             notify("{} blinks {}.".format(me, card))
         else:
@@ -959,26 +959,26 @@ def tolibrary(card, x = 0, y = 0):
     src = card.group
     fromText = "Battlefield" if src == table else src.name
     notify("{} moves {} from {} to Library.".format(me, card, fromText))
-    card.moveTo(card.owner.Library)
+    card.moveTo(card.owner.本国)
 
 def tolibraryposition(card, x = 0, y = 0):
     mute()
-    pos = askInteger("Move to what position?\nNOTE: 0 is the top.", 0)
+    pos = askInteger("上から何枚目に移動しますか？?\n注: 0 の場合は、一番上に移動する", 0)
     if pos == None:
         return
     src = card.group
     fromText = "the Battlefield" if src == table else src.name
     if pos == None:
         return
-    if pos > len(me.Library):
+    if pos > len(me.本国):
         notify("{} moves {} from {} to Library (bottom).".format(me, card, fromText))
-        card.moveToBottom(card.owner.Library)
+        card.moveToBottom(card.owner.本国)
     elif pos == 0:
         notify("{} moves {} from {} to Library (top).".format(me, card, fromText))
-        card.moveTo(card.owner.Library)
+        card.moveTo(card.owner.本国)
     else:
         notify("{} moves {} from {} to Library ({} from top).".format(me, card, fromText, pos))
-        card.moveTo(card.owner.Library, pos)
+        card.moveTo(card.owner.本国, pos)
 
 def libraryBottomAllShuffle(cards, x = 0, y = 0):
     mute()
@@ -989,7 +989,7 @@ def libraryBottomAllShuffle(cards, x = 0, y = 0):
         j = rng.Next(0, i + 1)
         cards[i], cards[j] = cards[j], cards[i]
     for card in cards:
-        card.moveToBottom(card.owner.piles['Library'])
+        card.moveToBottom(card.owner.piles['本国'])
     notify("{} shuffles {} selected cards to the bottom of their Library.".format(me, count))
 
 def tohand(card, x = 0, y = 0):
@@ -1007,14 +1007,14 @@ def tohand(card, x = 0, y = 0):
         else:
             cardname = card
         notify("{} moves {} to their hand from their {}.".format(me, cardname, src.name))
-    card.moveTo(card.owner.hand)
+    card.moveTo(card.owner.手札)
 
 def randomDiscard(group, x = 0, y = 0):
     mute()
     card = group.random()
     if card == None:
         return
-    card.moveTo(card.owner.Graveyard)
+    card.moveTo(card.owner.捨て山)
     notify("{} randomly discards {}.".format(me, card))
 
 def randomPick(group, x = 0, y = 0):
@@ -1042,17 +1042,17 @@ def mulligan(group, x = 0, y = 0):
         return
     notify("{} mulligans.".format(me))
     for card in group:
-        card.moveTo(card.owner.Library)
-    shuffle(me.Library, silence = True)
-    for card in me.Library.top(newCount):
-        card.moveTo(card.owner.hand)
+        card.moveTo(card.owner.本国)
+    shuffle(me.本国, silence = True)
+    for card in me.本国.top(newCount):
+        card.moveTo(card.owner.手札)
 
 def draw(group, x = 0, y = 0):
     mute()
     if len(group) == 0:
         return
     card = group[0]
-    card.moveTo(card.owner.hand)
+    card.moveTo(card.owner.手札)
     rnd(10,100)
     if re.search(r'Miracle ', card.Rules):
         if confirm("Cast this card for its Miracle cost?\n\n{}\n{}".format(card.Name, card.Rules)):
@@ -1072,33 +1072,33 @@ def drawMany(group, x = 0, y = 0):
     if len(group) == 0:
         return
     mute()
-    count = askInteger("Draw how many cards?", 7)
+    count = askInteger("何枚カードをドローしますか?", 7)
     if count == None:
         return
     for card in group.top(count):
-        card.moveTo(card.owner.hand)
+        card.moveTo(card.owner.手札)
     notify("{} draws {} cards.".format(me, count))
 
 def mill(group, x = 0, y = 0):
     if len(group) == 0:
         return
     mute()
-    count = askInteger("Mill how many cards?", 1)
+    count = askInteger("何枚カードを捨て山に移動しますか?", 1)
     if count == None:
         return
     for card in group.top(count):
-        card.moveTo(card.owner.Graveyard)
+        card.moveTo(card.owner.捨て山)
     notify("{} mills top {} cards from Library.".format(me, count))
 
 def exileMany(group, x = 0, y = 0):
     if len(group) == 0:
         return
     mute()
-    count = askInteger("Exile how many cards?", 1)
+    count = askInteger("何枚カードをジャンクヤードに移動しますか?", 1)
     if count == None:
         return
     for card in group.top(count):
-        card.moveTo(card.owner.piles['Exiled Zone'])
+        card.moveTo(card.owner.piles['ジャンクヤード'])
     notify("{} exiles top {} cards from Library.".format(me, count))
 
 def revealtoplibrary(group, x = 0, y = 0):
@@ -1113,31 +1113,31 @@ def revealtoplibrary(group, x = 0, y = 0):
 def exileAll(group, x = 0, y = 0):
     mute()
     for card in group:
-        card.moveTo(card.owner.piles['Exiled Zone'])
+        card.moveTo(card.owner.piles['ジャンクヤード'])
     notify("{} exiles all cards from {}.".format(me, group.name))
 
 def graveyardAll(group, x = 0, y = 0):
     mute()
     for card in group:
-        card.moveTo(card.owner.piles['Graveyard'])
+        card.moveTo(card.owner.piles['捨て山'])
     notify("{} moves all cards from their {} to Graveyard.".format(me, group.name))
 
 def libraryTopAll(group, x = 0, y = 0):
     mute()
     for card in group:
-        card.moveTo(card.owner.piles['Library'])
+        card.moveTo(card.owner.piles['本国'])
     notify("{} moves all cards from their {} to top of Library.".format(me, group.name))
 
 def libraryBottomAll(group, x = 0, y = 0):
     mute()
     for card in group:
-        card.moveToBottom(card.owner.piles['Library'])
+        card.moveToBottom(card.owner.piles['本国'])
     notify("{} moves all cards from their {} to bottom of Library.".format(me, group.name))
 
 def sideboardAll(group, x = 0, y = 0):
     mute()
     for card in group:
-        card.moveTo(card.owner.piles['Sideboard'])
+        card.moveTo(card.owner.piles['サイドボード'])
     notify("{} moves all cards from their {} to Sideboard.".format(me, group.name))
 
 def planesTopAll(group, x = 0, y = 0):
@@ -1155,7 +1155,7 @@ def planesBottomAll(group, x = 0, y = 0):
 def commandAll(group, x = 0, y = 0):
     mute()
     for card in group:
-        card.moveTo(card.owner.piles['Command Zone'])
+        card.moveTo(card.owner.piles['ゲーム除外'])
     notify("{} moves all cards from their {} to Command Zone.".format(me, group.name))
     
 #-------------------------------------------------------------

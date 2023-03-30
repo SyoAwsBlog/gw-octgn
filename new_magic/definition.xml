@@ -232,8 +232,8 @@
     <cardaction menu="カード表面/裏面を切り替える" shortcut="ctrl+shift+F" execute="flip" />
     <cardaction menu="Manifest Card" execute="manifest" />
     <cardaction menu="Clone Card" shortcut="ctrl+C" batchExecute="clone" />
-    <cardaction menu="カードを廃棄する" shortcut="del" batchExecute="batchDestroy" />
-    <cardaction menu="Exile Card" shortcut="ctrl+E" batchExecute="batchExile" />
+    <cardaction menu="カードを捨て山に移動する" shortcut="del" batchExecute="batchDestroy" />
+    <cardaction menu="カードを廃棄する" shortcut="ctrl+E" batchExecute="batchExile" />
     <cardaction menu="Blink Card" shortcut="ctrl+shift+B" execute="blink" />
     <cardaction menu="本国の上に移動" shortcut="ctrl+Y" execute="tolibrary" />
     <cardaction menu="本国に戻してシャッフルする" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
@@ -273,7 +273,7 @@
 	<globalvariable name="f6" value="False" />
     <globalvariable name="secrets" value=""/>
     <group viewState="expanded" name="手札" shortcut="ctrl+H" visibility="me" icon="groups/hand.png">
-      <cardaction menu="コマンドを使う" default="True" shortcut="ctrl+c" execute="play" />
+      <cardaction menu="カードをプレイする" default="True" shortcut="ctrl+c" execute="play" />
       <cardaction menu="カードを裏面にして出す" shortcut="ctrl+F" execute="morph" />
       <cardaction menu="Suspend Card" execute="suspend" />
       <cardaction menu="捨て山" shortcut="del" execute="discard" />

@@ -95,7 +95,7 @@ def initializeGame():
 def changePhase(args):
     mute()
     phaseIdx = currentPhase()[1]
-    if phaseIdx == 1 and me.isActive:
+    if phaseIdx == 2 and me.isActive:
         untapStep(table)
     resetPriority()
 
@@ -394,16 +394,26 @@ def scry(group = me.本国, x = 0, y = 0, count = None):
         count = askInteger("何枚のカードを閲覧しますか?", 1)
     if count == None or count == 0:
         return
+    if topBottom == None:
+        topBottom = askInteger("上からですか？下からですか？（上：1／下：2）", 1)
+    if count == None or count == 0:
+        return
     topCards = []
-    for c in group.top(count):
-        topCards.append(c)
-        c.peek()
-    dlg = cardDlg(topCards, [])
+    bottomCards = []
+    if topBottom == 1:
+        for c in group.top(count):
+            topCards.append(c)
+            c.peek()
+    else:
+        for c in group.bottom(count):
+            bottomCards.append(c)
+            c.peek()
+    dlg = cardDlg(topCards, bottomCards)
     dlg.max = count
     dlg.title = "閲覧"
     dlg.label = "本国の上から"
     dlg.bottomLabel = "本国の下から"
-    dlg.text = "上から閲覧か、下から閲覧か、選択してください。\n\n(Windowを閉じると閲覧をキャンセルします)"
+    dlg.text = "上に戻すか、下に戻すか、選択してください。\n\n(Windowを閉じると閲覧をキャンセルします)"
     if dlg.show() == None:
         notify("{} は{}枚の閲覧をキャンセルした ".format(me, count))
         return ## closing the dialog window will cancel the scry, not moving any cards, but peek status will stay on to prevent cheating.
@@ -411,7 +421,7 @@ def scry(group = me.本国, x = 0, y = 0, count = None):
         c.moveTo(group)
     for c in dlg.bottomList:
         c.moveToBottom(group)
-    notify("{} は {}毎の閲覧をしました 上から{}枚、下から{}枚".format(me, count, len(dlg.list), len(dlg.bottomList)))
+    notify("{} は {}毎の閲覧をしました 上に{}枚、下に{}枚".format(me, count, len(dlg.list), len(dlg.bottomList)))
     group.visibility = "none"
 
 def play(card, x = 0, y = 0):
@@ -487,7 +497,7 @@ def play(card, x = 0, y = 0):
             card.moveTo(card.owner.ジャンクヤード)
         else:
             card.moveToTable(defaultX, defaultY)
-        notify("{} plays {} from their {}.".format(me, card, src))
+        notify("{} は {} をプレイした（ {} から）".format(me, card, src))
     cardalign()
 
 def playCommander(card, x = 0, y = 0):

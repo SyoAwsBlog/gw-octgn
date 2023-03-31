@@ -339,9 +339,9 @@ def autoResolve(card):
     card.markers[counters['x']] = 0
     del stackDict[card]
     if stackData['class'] != 'cast':
-        card.moveTo(me.Graveyard) ## removes copied stack items (non-cast triggers)
+        card.moveTo(me.ジャンクヤード) ## removes copied stack items (non-cast triggers)
     elif card.isFaceUp and card in table and (re.search('Instant', card.Type) or re.search('Sorcery', card.Type)):
-        card.moveTo(card.owner.Graveyard)   #instants/sorceries go to graveyard once resolved, unless already in another zone
+        card.moveTo(card.owner.ジャンクヤード)   #instants/sorceries go to graveyard once resolved, unless already in another zone
     resetPriority()
     return stackData
 

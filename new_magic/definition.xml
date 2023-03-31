@@ -201,7 +201,7 @@
     <groupaction menu="Clean-up Targets and Combat" shortcut="esc" execute="clearAll" />
     <groupaction menu="永続的にリロール状態にする" shortcut="ctrl+U" execute="untapStep" />
     <groupaction menu="コイン／ダイスを振る" shortcut="ctrl+R" execute="rollDie" />
-    <groupaction menu="コイン／ダイスを設定" shortcut="ctrl+shift+R" execute="setDie" />
+    <groupaction menu="コイン／ダイスの面を設定して振る" shortcut="ctrl+shift+R" execute="setDie" />
     <groupaction menu="コインを出す..." shortcut="ctrl+shift+T" execute="token" />
     <groupaction menu="無作為にカードを選ぶ" execute="randomPick" />
     <groupaction menu="破壊を無効にする" shortcut="Enter" execute="respond" />
@@ -229,6 +229,7 @@
     <cardaction menu="防御" shortcut="ctrl+B" batchExecute="batchBlock" />
     <cardaction menu="テキストの効果を使用する" shortcut="ctrl+Z" execute="activate" />
     <cardaction menu="カードをセットする" shortcut="ctrl+Q" execute="attach" />
+    <cardaction menu="カードを変形する" shortcut="ctrl+F" execute="transform" />
     <cardaction menu="カード表面/裏面を切り替える" shortcut="ctrl+shift+F" execute="flip" />
     <cardaction menu="Manifest Card" execute="manifest" />
     <cardaction menu="Clone Card" shortcut="ctrl+C" batchExecute="clone" />
@@ -331,7 +332,7 @@
       <cardaction menu="本国のＸ枚目に移動する" shortcut="ctrl+shift+Y" execute="tolibraryposition" />
       <cardaction menu="効果の対象をタグ付けする" execute="submitTags" />
     </group>
-    <group name="ジャンクヤード" shortcut="ctrl+E" visibility="all" icon="groups/removed.png" viewState="collapsed">
+    <group name="ジャンクヤード" shortcut="ctrl+E" visibility="all" icon="groups/removed.png" viewState="expanded">
       <groupaction menu="シャッフル" execute="shuffle" />
       <groupaction menu="無作為に1枚選ぶ" shortcut="ctrl+R" execute="randomPick" />
       <groupactions menu="全てのカード...">

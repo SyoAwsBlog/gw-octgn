@@ -117,11 +117,11 @@ def autoPass(group, x = 0, y = 0):
     mute()
     if me.getGlobalVariable("f6") == "False":
         me.setGlobalVariable("f6", "True")
-        whisper("You are now auto-passing priority.")
+        whisper("あなたは主導権の自動パスを有効にしています。")
         passPriority(group)
     else:
         me.setGlobalVariable("f6", "False")
-        whisper("You turned off auto-pass priority.")
+        whisper("あなたは主導権の自動パスを無効にしています。")
 
 def nextPhase(group, x = 0, y = 0):
     mute()
@@ -145,7 +145,7 @@ def untapStep(group, x = 0, y = 0):
         else:
             card.orientation &= ~Rot90
             card.highlight = None
-    notify("{} untaps their permanents.".format(me))
+    notify("{} はカードをリロールします。".format(me))
     cardalign()
 
 def goToUpkeep(group, x = 0, y = 0):
@@ -229,21 +229,16 @@ def rollDie(group, x = 0, y = 0):
 def dieFunct(num):
     if num == 6:
         n = rnd(1, 6)
-        if n == 1:
-            notify("{} rolls 1 (PLANESWALK) on a 6-sided die.".format(me))
-        elif n == 6:
-            notify("{} rolls 6 (CHAOS) on a 6-sided die.".format(me))
-        else:
-            notify("{} rolls {} on a 6-sided die.".format(me, n))
+        notify("{} はサイコロを振った：結果： {} ".format(me, n))
     elif num == 2:
         n = rnd(1, 2)
         if n == 1:
-            notify("{} rolls 1 (HEADS) on a 2-sided die.".format(me))
+            notify("{} はコインを回した：結果：表".format(me))
         else:
-            notify("{} rolls 2 (TAILS) on a 2-sided die.".format(me))
+            notify("{} はコインを回した：結果：裏".format(me))
     else:
         n = rnd(1, num)
-        notify("{} rolls {} on a {}-sided die.".format(me, n, num))
+        notify("{} は {} 面ダイスを振った：結果 {} ".format(me, num, n))
       
 def token(group, x = 0, y = 0):
     guid, quantity = askCard({"Rarity":"Token"}, "And")
@@ -388,7 +383,7 @@ def createDungeon(group, x = 0, y = 0):
 # Autoscript-Linked Card functions
 #--------------------------------
 
-def scry(group = me.本国, x = 0, y = 0, count = None):
+def scry(group = me.本国, x = 0, y = 0, count = None, topBottom = None):
     mute()
     if count == None:
         count = askInteger("何枚のカードを閲覧しますか?", 1)
@@ -433,38 +428,7 @@ def play(card, x = 0, y = 0):
             srcText = ""
         else:
             srcText = " from {}".format(card.group.name)
-        ## Deal with Split cards
-        if 'splitA' in card.alternates:
-            splitRules = [card.alternateProperty('splitA', 'Rules'),
-                          card.alternateProperty('splitB', 'Rules')]
-            splitFlags = ['A','B']
-            ## splitC is the fused split card
-            if re.search("Fuse", card.Rules) and src == me.手札:
-                splitRules.append('Fuse both sides')
-                splitFlags.append('C')
-            choice = askChoice('Cast which side of {}?'.format(card.name), splitRules)
-            if choice == 0: ## closing the window will cancel the Cast
-                return
-            stackData = autoCast(card, alt = splitFlags[choice - 1])
-        elif 'adventure' in card.alternates and counters['adventure'] not in card.markers:
-            choice = askChoice('Casting adventure card:', ["Cast {})".format(card.alternateProperty("", 'Name')), "Cast Adventure ({})".format(card.alternateProperty("adventure", 'Name'))])
-            if choice == 0:
-                return
-            if choice == 2:
-                card.alternate = "adventure"
-                stackData = autoCast(card)
-                stackDict[card]['moveto'] = 'exile'
-            else:
-                stackData = autoCast(card)
-        elif 'modal_dfc' in card.alternates:
-            choice = askChoice('Cast which side of {}?'.format(card.name), ["Spell side - {}".format(card.alternateProperty("", "Name")), "Land side - {}".format(card.alternateProperty("modal_dfc", "Name"))])
-            if choice == 0:
-                return
-            if choice == 2:
-                card.alternate = "modal_dfc"
-            stackData = autoCast(card)
-        else:
-            stackData = autoCast(card)
+        stackData = autoCast(card)
         if stackData != "BREAK":
             text += stackData['text']
             ## Checks to see if the cast card is an Aura, then check to see if a target was made to resolve-attach to
@@ -488,12 +452,12 @@ def play(card, x = 0, y = 0):
             else:
                 modeTuple = stackDict[card]['mode']
                 if modeTuple[0] == 0:
-                    notify("{} casts {}{}{}.".format(me, card, srcText, text))
+                    notify("{} は {} をプレイしている。カード名：{} , テキスト： {}".format(me, card, srcText, text))
                 else:
-                    notify("{} casts {} (mode #{}){}{}.".format(me, card, modeTuple[0], srcText, text))
+                    notify("{} は {} をプレイしている。(mode #{}) カード名：{} , テキスト： {}".format(me, card, modeTuple[0], srcText, text))
     else:
         src = card.group.name
-        if re.search("Command", card.Type) or re.search("Sorcery", card.Type):
+        if re.search("Command", card.Type) :
             card.moveTo(card.owner.ジャンクヤード)
         else:
             card.moveToTable(defaultX, defaultY)
@@ -538,7 +502,6 @@ def resolve(card):
                     notify("{} casts suspended {}{}.".format(me, card, stackData['text']))
         ## double-clicking cards on the stack will resolve them
         elif card in stackDict:
-            alt = card.alternate
             stackData = autoResolve(card)
             if stackData == "BREAK": return
             if stackData['class'] == 'miracle':
@@ -548,17 +511,13 @@ def resolve(card):
                     notify("{}'s {} Miracle trigger is countered (no longer in hand.)".format(me, card))
             else:
                 notify("{} resolves {} ({}){}.".format(me, card, stackData['class'], stackData['text']))
-            if alt == "adventure":
-                card.markers[counters['adventure']] = 1
-            if stackData['class'] == 'cast':
-                etbData = autoTrigger(stackData['src'], 'etb', cost = stackData['cost'], x = stackData['x'])
         ## double-clicking a card in play just taps it
         else:
             card.orientation ^= Rot90
             if card.orientation & Rot90 == Rot90:
-                notify('{} taps {}'.format(me, card))
+                notify('{} は {} をロールします。'.format(me, card))
             else:
-                notify('{} untaps {}'.format(me, card))
+                notify('{} は {} をリロールします。'.format(me, card))
     else:
         card.orientation ^= Rot90
         if card.orientation & Rot90 == Rot90:
@@ -763,47 +722,12 @@ def manifest(card, x = 0, y = 0):
 
 def transform(card, x = 0, y = 0):
     mute()
-    if 'transform' in card.alternates:
-        notify("{} transforms {}.".format(me, card))
-        if card.alternate == '':
-            card.alternate = 'transform'
-        else:
-            card.alternate = ''
-    elif 'modal_dfc' in card.alternates:
-        notify("{} transforms {}.".format(me, card))
-        if card.alternate == '':
-            card.alternate = 'modal_dfc'
-        else:
-            card.alternate = ''
-    elif 'meld' in card.alternates:
-        notify("{} transforms {}.".format(me, card))
-        if card.alternate == '':
-            card.alternate = 'meld'
-        else:
-            card.alternate = ''
-    elif 'flip' in card.alternates:
-        notify("{} flips {}.".format(me, card))
-        if card.alternate == '':
-            card.alternate = 'flip'
-        else:
-            card.alternate = ''
+    if card.orientation & Rot180 == Rot180:
+        card.orientation = Rot0
+        notify('{} は {} を通常形態に戻した'.format(me, card))
     else:
-        if card.isFaceUp == True:
-            notify("{} morphs {} face down.".format(me, card))
-            card.isFaceUp = False
-        else:
-            if autoscriptCheck():
-                card.peek()
-                rnd(1,10)
-                card.isFaceUp = True
-                stackData = autoTrigger(card, 'morph') ## The card will flip up in the autoParser
-                card.markers[counters['manifest']] = 0
-                if stackData != "BREAK":
-                    notify("{} morphs {} face up{}.".format(me, card, stackData['text']))
-            else:
-                card.isFaceUp = True
-                card.markers[counters['manifest']] = 0
-                notify("{} morphs {} face up.".format(me, card))
+        card.orientation = Rot180
+        notify('{} は {} を変形した '.format(me, card))
     cardalign()
 
 def suspend(card, x = 0, y = 0):
@@ -1076,7 +1000,7 @@ def draw(group, x = 0, y = 0):
                 miracletrig.moveToTable(defaultX, defaultY)
                 notify("{} draws a miracle {}.".format(me, card))
             return
-    notify("{} draws a card.".format(me))
+    notify("{} は、カードを1枚ドローした。".format(me))
 
 def drawMany(group, x = 0, y = 0):
     if len(group) == 0:
@@ -1087,7 +1011,7 @@ def drawMany(group, x = 0, y = 0):
         return
     for card in group.top(count):
         card.moveTo(card.owner.手札)
-    notify("{} draws {} cards.".format(me, count))
+    notify("{} は、 {} 枚のカードをドローした。".format(me, count))
 
 def mill(group, x = 0, y = 0):
     if len(group) == 0:
@@ -1098,7 +1022,7 @@ def mill(group, x = 0, y = 0):
         return
     for card in group.top(count):
         card.moveTo(card.owner.捨て山)
-    notify("{} mills top {} cards from Library.".format(me, count))
+    notify("{}は、本国の上から {} 枚のカードを捨て山に移動した。".format(me, count))
 
 def exileMany(group, x = 0, y = 0):
     if len(group) == 0:
@@ -1124,31 +1048,31 @@ def exileAll(group, x = 0, y = 0):
     mute()
     for card in group:
         card.moveTo(card.owner.piles['ジャンクヤード'])
-    notify("{} exiles all cards from {}.".format(me, group.name))
+    notify("{} は、 {} のカードをジャンクヤードに移動した。".format(me, group.name))
 
 def graveyardAll(group, x = 0, y = 0):
     mute()
     for card in group:
         card.moveTo(card.owner.piles['捨て山'])
-    notify("{} moves all cards from their {} to Graveyard.".format(me, group.name))
+    notify("{}は 、 {} のカードを捨て山に移動した。".format(me, group.name))
 
 def libraryTopAll(group, x = 0, y = 0):
     mute()
     for card in group:
         card.moveTo(card.owner.piles['本国'])
-    notify("{} moves all cards from their {} to top of Library.".format(me, group.name))
+    notify("{}は、 {} のカードを本国の上に移動した。".format(me, group.name))
 
 def libraryBottomAll(group, x = 0, y = 0):
     mute()
     for card in group:
         card.moveToBottom(card.owner.piles['本国'])
-    notify("{} moves all cards from their {} to bottom of Library.".format(me, group.name))
+    notify("{}は、 {} のカードを本国の下に移動した。".format(me, group.name))
 
 def sideboardAll(group, x = 0, y = 0):
     mute()
     for card in group:
         card.moveTo(card.owner.piles['サイドボード'])
-    notify("{} moves all cards from their {} to Sideboard.".format(me, group.name))
+    notify("{} は、 {} のカードをサイドボードに移動した。".format(me, group.name))
 
 def planesTopAll(group, x = 0, y = 0):
     mute()
@@ -1166,7 +1090,7 @@ def commandAll(group, x = 0, y = 0):
     mute()
     for card in group:
         card.moveTo(card.owner.piles['ゲーム除外'])
-    notify("{} moves all cards from their {} to Command Zone.".format(me, group.name))
+    notify("{} は、 {} のカードをゲームから取り除いた。".format(me, group.name))
     
 #-------------------------------------------------------------
 # Misc. Functions

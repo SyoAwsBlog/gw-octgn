@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<set name="タクティカルスターター　爆炎の決闘場" id="2c681e3e-1f90-4844-9ad3-6080492aaf2f" gameId="08D4EEAD-4DE8-4992-8D03-4A103889996E" shortName="ts02" releaseDate="2006-05-24">
+  <packaging>
+    <pack name="Booster" id="f73736ec-b73e-45d3-a6d3-19272576c019">
+      <options>
+        <option probability="0.875">
+          <pick qty="1" key="Rarity" value="Rare" />
+        </option>
+      </options>
+      <pick qty="3" key="Rarity" value="Uncommon" />
+      <pick qty="7" key="Rarity" value="Common" />
+      <pick qty="0" key="Rarity" value="国力" />
+    </pack>
+  </packaging>
+  <cards>
+    <card name="ドップ" id="e2dc7ca2-0e21-4a67-ae47-77490b1e953d">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="地球">地球　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-1-0
+      Stats - */1/1
+(自動B)：このカードはプレイされて場に出る場合、リロール状態で出る。さらに、ターン終了時にカード1枚を引く。</property>
+      <property name="Power" value="*" />
+      <property name="Shoot" value="1" />
+      <property name="Toughness" value="1" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-47" />
+    </card>
+    <card name="ドップ" id="fc1de897-11fc-4718-8708-edbd9508ecf8">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="地球">地球　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-1-0
+      Stats - */1/1
+(自動B)：このカードはプレイされて場に出る場合、リロール状態で出る。さらに、ターン終了時にカード1枚を引く。</property>
+      <property name="Power" value="*" />
+      <property name="Shoot" value="1" />
+      <property name="Toughness" value="1" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-47" />
+    </card>
+    <card name="ガトル" id="3f92a370-1a65-4d0f-a7a3-48691479d2ee">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-1-0
+      Stats - */1/1
+(自動B)：このカードはプレイされて場に出る場合、リロール状態で出る。さらに、ターン終了時にカード1枚を引く。</property>
+      <property name="Power" value="*" />
+      <property name="Shoot" value="1" />
+      <property name="Toughness" value="1" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-48" />
+    </card>
+    <card name="ガトル" id="dfe8dd66-0bfc-4893-9b49-8d73f3fd32e1">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-1-0
+      Stats - */1/1
+(自動B)：このカードはプレイされて場に出る場合、リロール状態で出る。さらに、ターン終了時にカード1枚を引く。</property>
+      <property name="Power" value="*" />
+      <property name="Shoot" value="1" />
+      <property name="Toughness" value="1" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-48" />
+    </card>
+    <card name="MS-15KG　ギャン・クリーガー" id="39bcbcff-ff60-4ec3-b88c-aaf3f74dfbb8">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="1">1</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="強襲">強襲　</s>
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-4-1
+      Stats - 5/0/4
+強襲
+(自動A)：このカードは防御に出撃できない。</property>
+      <property name="Power" value="5" />
+      <property name="Shoot" value="0" />
+      <property name="Toughness" value="4" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-136" />
+    </card>
+    <card name="YMS-18　ケンプファー(試作機)" id="66e18ab8-822c-4703-8cd9-492d7e8e92e4">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="4">4</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="プリベント">プリベント　</s>
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 1-4-2
+      Stats - 4/0/3
+プリベント(3)
+(自動B)：《[1・1]》このカードが手札にある場合、または交戦中の場合、このカードを廃棄する事ができる。その場合、戦闘エリアにいる敵軍ユニット1枚に、3ダメージを与える。</property>
+      <property name="Power" value="4" />
+      <property name="Shoot" value="0" />
+      <property name="Toughness" value="3" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-263" />
+    </card>
+    <card name="衛星ミサイル" id="4d6eb421-47e1-4e6c-b0b2-cf5a9f76da37">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="3">3</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-3-0
+(自動B)：《[2・3]》配備フェイズに、このカードが自軍ジャンクヤードにある場合、手札2枚を選んで廃棄する事ができる。その場合、このカードを本来の持ち主の手札に移す。
+(ダメージ判定ステップ)：敵軍ユニット1枚にXダメージを与える。Xの値はそのユニットの防御力-1と同じ値とする。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-80" />
+    </card>
+    <card name="衛星ミサイル" id="3170d92f-b819-4b70-8ccc-192b4f14c199">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="3">3</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-3-0
+(自動B)：《[2・3]》配備フェイズに、このカードが自軍ジャンクヤードにある場合、手札2枚を選んで廃棄する事ができる。その場合、このカードを本来の持ち主の手札に移す。
+(ダメージ判定ステップ)：敵軍ユニット1枚にXダメージを与える。Xの値はそのユニットの防御力-1と同じ値とする。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-80" />
+    </card>
+    <card name="光る宇宙" id="7bf5ca90-aeb7-4029-9cc3-1e68aa00f7bc">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="5">5</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="5" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+        <s value="プリベント">プリベント　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-5-0
+プリベント(5)
+(自軍攻撃ステップ)：全てのユニットに5ダメージを与える。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-84" />
+    </card>
+    <card name="鬼気迫る攻撃" id="ef646716-087b-4c12-863e-6f43047c3ef7">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-1-0
+(常時)：このターン、(この効果の解決以降)この効果以外の自軍効果で敵軍ユニットにダメージを与える毎に、その敵軍ユニットに3ダメージを与える。この効果は、リングエリアにいるユニットも対象にできる。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-110" />
+    </card>
+    <card name="鬼気迫る攻撃" id="d76017a3-2c2f-41f5-81bc-db3a8e4db161">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-1-0
+(常時)：このターン、(この効果の解決以降)この効果以外の自軍効果で敵軍ユニットにダメージを与える毎に、その敵軍ユニットに3ダメージを与える。この効果は、リングエリアにいるユニットも対象にできる。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-110" />
+    </card>
+    <card name="緑基本Ｇ" id="99cc33aa-d5dd-4683-a296-74ced41a5e96">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-13" />
+    </card>
+    <card name="緑基本Ｇ" id="5e64a3cf-1864-40aa-b6a4-bffc5bae7b20">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-13" />
+    </card>    
+    <card name="緑基本Ｇ" id="1192b638-b93e-4f28-89de-6983b1ba4f85">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-14" />
+    </card>
+    <card name="緑基本Ｇ" id="736c7d0c-0716-4b8f-9e8e-39db62b4f95c">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-14" />
+    </card> 
+    <card name="緑基本Ｇ" id="4b8ae51f-2bdb-4afb-ac5f-091b04cc0259">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-15" />
+    </card>
+    <card name="緑基本Ｇ" id="32e58f67-a54f-4ec1-ab09-33dfceaa3cf8">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-15" />
+    </card> 
+    <card name="緑基本Ｇ" id="663586c2-883e-47f1-a85d-ddca7cfdcd1d">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="緑" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：緑 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-15" />
+    </card>
+    <card name="NRX-007　コルレル" id="168e951f-a5c0-42cd-ae0e-cfc57b67aa6e">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="3">3</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="地球">地球　</s>
+        <s value="プリベント">プリベント　</s>
+        <s value="速攻">速攻　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-3-2
+      Stats - 5/0/1
+プリベント(3)　速攻
+(自動A)：このカードは、敵軍ユニットと敵軍キャラクターの効果によっては、破壊されずダメージを受けない。</property>
+      <property name="Power" value="5" />
+      <property name="Shoot" value="0" />
+      <property name="Toughness" value="1" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-X35" />
+    </card>
+    <card name="GF13-011NC　ドラゴンガンダム" id="3a8791fc-de8f-4689-8d9a-994912df5286">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="プリベント">プリベント　</s>
+        <s value="クイック">クイック　</s>
+        <s value="【MF】">【MF】　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-4-2
+      Stats - 4-5/1-2/2-3
+プリベント(3)　クイック　【MF】
+(自動B)：このカードの指定国力は、緑国力でも支払う事ができる。
+(ダメージ判定ステップ)：《(1)》このカードと交戦中の敵軍ユニット1枚に、3ダメージを与える。</property>
+      <property name="Power" value="4-5" />
+      <property name="Shoot" value="1-2" />
+      <property name="Toughness" value="2-3" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-G3" />
+    </card>
+    <card name="GF13-055NI　ネロスガンダム" id="936c4b87-2766-49a6-8b3c-c72aef46a3f9">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="3">3</s>
+        <s value="1">1</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="【MF】">【MF】　</s>
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-3-1
+      Stats - 3-4/1-1/2-3
+【MF】</property>
+      <property name="Power" value="3-4" />
+      <property name="Shoot" value="1-1" />
+      <property name="Toughness" value="2-3" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-G6" />
+    </card>
+    <card name="GF13-017NJ　シャイニングガンダム" id="74f6461e-c2e7-4ddf-8df7-c6d788346ff1">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="プリベント">プリベント　</s>
+        <s value="【MF】">【MF】　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-4-2
+      Stats - 3-5/0-0/3-5
+プリベント(5)　【MF】
+(自動B)：このカードはプレイされて場に出る場合、リロール状態で出る。
+(自動A)：このカードは、配備エリアにいる場合、破壊されずダメージを受けない。</property>
+      <property name="Power" value="3-5" />
+      <property name="Shoot" value="0-0" />
+      <property name="Toughness" value="3-5" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-G1" />
+    </card>
+    <card name="GF13-017NJ　シャイニングガンダム" id="e948ae55-1b9c-408f-9356-496ef95f9c79">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="プリベント">プリベント　</s>
+        <s value="【MF】">【MF】　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-4-2
+      Stats - 3-5/0-0/3-5
+プリベント(5)　【MF】
+(自動B)：このカードはプレイされて場に出る場合、リロール状態で出る。
+(自動A)：このカードは、配備エリアにいる場合、破壊されずダメージを受けない。</property>
+      <property name="Power" value="3-5" />
+      <property name="Shoot" value="0-0" />
+      <property name="Toughness" value="3-5" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-G1" />
+    </card>
+    <card name="GF13-017NJ シャイニングガンダム(スーパーモード)" id="5763266d-e417-4b34-a68d-b361605cefd9">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="5">5</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="5" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="プリベント">プリベント　</s>
+        <s value="【MF】">【MF】　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-5-2
+      Stats - 4-6/1-1/4-6
+プリベント(5)　【MF】
+(自動B)：《[2・4]》このカードは手札、または自軍ハンガーにある場合、リングエリアにいる自軍「シャイニングガンダム」と置き換える事ができる。このカードが場に出た場合、このカードと交戦中の敵軍ユニット1枚を選んで破壊する事ができる。</property>
+      <property name="Power" value="4-6" />
+      <property name="Shoot" value="1-1" />
+      <property name="Toughness" value="4-6" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="U-G12" />
+    </card>
+    <card name="GF13-037NCA　ランバーガンダム" id="fd83d215-db33-4866-9565-25d0d216d5f3">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="3">3</s>
+        <s value="2">2</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Unit" />
+      <property name="Subtype">
+        <s value="宇宙">宇宙　</s>
+        <s value="地球">地球　</s>
+        <s value="【MF】">【MF】　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 2-3-2
+      Stats - 2-3/0-0/3-5
+【MF】
+(自動D)：(場の)カードが破壊されて廃棄された場合、このカードの上に+1/+1/±0コイン1個を乗せる。
+(自動D)：このカードが敵軍キャラクターと交戦中となった場合、ターン終了時に、このカードの上にある+1/+1/±0コイン全てを取り除く。</property>
+      <property name="Power" value="2-3" />
+      <property name="Shoot" value="0-0" />
+      <property name="Toughness" value="3-5" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="★★★" />
+    </card>
+    <card name="チボデー・クロケット" id="f1b1093e-d089-49ae-97b8-4cb48938df14">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Character" />
+      <property name="Subtype">
+        <s value="男性">男性　</s>
+        <s value="大人">大人　</s>
+        <s value="GF">GF　</s>
+        <s value="プリベント">プリベント　</s>
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-4-0
+      Stats - 2/0/2
+プリベント(5)
+(自動B)：このカードの指定国力は、青国力でも支払う事ができる。
+(自動D)：このカードの部隊が敵軍本国に戦闘ダメージを与えた場合、カード1枚を引く。</property>
+      <property name="Power" value="2" />
+      <property name="Shoot" value="0" />
+      <property name="Toughness" value="2" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="CH-G2" />
+    </card>
+    <card name="サイ・サイシー" id="1bde08f9-8a02-4168-bcaa-7df8225cf5a7">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Character" />
+      <property name="Subtype">
+        <s value="男性">男性　</s>
+        <s value="子供">子供　</s>
+        <s value="GF">GF　</s>
+        <s value="プリベント">プリベント　</s>
+        <s value="クイック">クイック　</s>
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-4-0
+      Stats - 2/2/1
+プリベント(5)　クイック
+(自動B)：このカードの指定国力は、緑国力でも支払う事ができる。
+(自動A)：このカードがセットされているユニットが受ける、戦闘ダメージ以外の全てのダメージは、1減殺される。</property>
+      <property name="Power" value="2" />
+      <property name="Shoot" value="2" />
+      <property name="Toughness" value="1" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="CH-G3" />
+    </card>
+    <card name="ドモン・カッシュ" id="ea8bd20e-43b3-4beb-b784-97356a21ee7d">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Character" />
+      <property name="Subtype">
+        <s value="男性">男性　</s>
+        <s value="大人">大人　</s>
+        <s value="GF">GF　</s>
+        <s value="プリベント">プリベント　</s>
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 2-4-0
+      Stats - 2/1/2
+プリベント(5)
+(自動A)：このカードが属するセットグループは、敵軍効果ではロールしない。
+(戦闘フェイズ)：《(0)》このカードは、「MF」を持つユニットにセットされている状態で交戦中の場合、ターン終了時まで+2/+2/+2を得る。</property>
+      <property name="Power" value="2" />
+      <property name="Shoot" value="1" />
+      <property name="Toughness" value="2" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="CH-G1" />
+    </card>
+    <card name="アンドリュー・グラハム" id="7f182000-087b-4bcf-8baa-adcca7b96030">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="3">3</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Character" />
+      <property name="Subtype">
+        <s value="男性">男性　</s>
+        <s value="大人">大人　</s>
+        <s value="GF">GF　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 1-3-0
+      Stats - 1/0/2
+(自軍攻撃ステップ)：《(0)》このカードがリングエリアに出撃している場合、敵軍ユニット1枚をロールし、そのユニットとは異なる敵軍ユニット1枚をリロールする。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="CH-G11" />
+    </card>
+    <card name="宝物没収" id="a2e87b05-e0ce-44c3-96d9-721d163b9498">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="2">2</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="2" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="R" />
+      <property name="Rules">Cost - 1-2-0
+(常時)：自軍捨て山の上のカード2枚を引く。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-2" />
+    </card>
+    <card name="月のマウンテンサイクル" id="6983e2da-9cb2-4de4-9ce3-1c58db88fdcb">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="2">2</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="2" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-2-0
+(常時)：プレイヤー1人は、自軍捨て山の上のカード5枚までを見て、その中から1枚を手札に移す。その後、残りのカードを任意の順番で自軍捨て山の下に戻す。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-8" />
+    </card>
+    <card name="月のマウンテンサイクル" id="534c504c-9411-408e-b95e-5ec5c0181c50">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="2">2</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="2" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-2-0
+(常時)：プレイヤー1人は、自軍捨て山の上のカード5枚までを見て、その中から1枚を手札に移す。その後、残りのカードを任意の順番で自軍捨て山の下に戻す。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-8" />
+    </card>
+    <card name="シャイニングフィンガーソード" id="51e7362b-b08c-4c83-a54a-ecf7e651c2e2">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="4">4</s>
+        <s value="1">1</s>
+      </property>
+      <property name="CMC" value="4" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Command" />
+      <property name="Subtype">
+        <s value="プリベント">プリベント　</s>
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 2-4-1
+プリベント(3)
+(ダメージ判定ステップ)：「MF」を持つ自軍ユニットがいる場合、リングエリアを含む戦闘エリア1つにいる、X以下の合計国力を持つ全ての敵軍カードを破壊する。Xの値は、手札の枚数と同じとする。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="C-G7" />
+    </card>
+    <card name="発掘道具" id="5f0e5b86-4194-4765-a6f6-05aa46e1ba1a">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="2">2</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="2" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Operation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-2-0
+(常時)：《(0)》自軍G2枚をロールし、手札1枚を選んで廃棄する。その場合、自軍捨て山のカード1枚を引く。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="O-5" />
+    </card>
+    <card name="発掘道具" id="9c4a1f5d-6355-49e6-adc2-d48e607cfaed">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="2">2</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="2" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Operation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 2-2-0
+(常時)：《(0)》自軍G2枚をロールし、手札1枚を選んで廃棄する。その場合、自軍捨て山のカード1枚を引く。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="O-5" />
+    </card>
+    <card name="天を灼く剣" id="276c36b4-a032-4217-95db-cc16572e395b">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="3">3</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Operation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 1-3-0
+(ダメージ判定ステップ)：《(0)毎》自軍G2枚をロールし、手札にあるG1枚を選んで、または自軍ジャンクヤードにあるG1枚をゲームから取り除く。その場合、戦闘エリアにいるユニット1枚に2ダメージを与える。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="O-57" />
+    </card>
+    <card name="天を灼く剣" id="8b65e36e-524c-4f48-9208-4cd007453da7">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="3">3</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="3" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Operation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 1-3-0
+(ダメージ判定ステップ)：《(0)毎》自軍G2枚をロールし、手札にあるG1枚を選んで、または自軍ジャンクヤードにあるG1枚をゲームから取り除く。その場合、戦闘エリアにいるユニット1枚に2ダメージを与える。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="O-57" />
+    </card>
+    <card name="ディアナ帰還" id="a3bf742d-9ba2-48a3-a330-a6278e1ad16b">
+      <property name="Cost">
+        <s value="1">1</s>
+        <s value="1">1</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="1" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Operation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="U" />
+      <property name="Rules">Cost - 1-1-0
+(常時)：《(0)毎》自軍G1枚をロールする。その場合、自軍捨て山の上のカード1枚を廃棄し、自軍本国を1回復する。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="O-62" />
+    </card>
+    <card name="人機一体" id="00ce8d0c-23fd-460a-88ad-8051d681ceda">
+      <property name="Cost">
+        <s value="2">2</s>
+        <s value="2">2</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="2" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Operation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 2-2-0
+(自軍配備フェイズ)：《R》「MF」を持つ自軍ユニットがいる場合、このカードとG以外の、自軍カード1枚を廃棄する。その場合、自軍本国の上のカード10枚までを見て、その中から「GF」を持つキャラクターを1枚抜き出し、表にした後で手札に移す事ができる。その後、自軍本国をシャッフルする。</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="O-G4" />
+    </card>
+
+
+    <card name="茶基本Ｇ" id="7534c432-c192-4305-ab02-6490d481849c">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-14" />
+    </card>
+    <card name="茶基本Ｇ" id="1c2f56b7-096b-496d-a8ad-b8d90a406760">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-14" />
+    </card>
+    <card name="茶基本Ｇ" id="8f35b2bf-f115-4176-ba16-9c2cf9226180">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-14" />
+    </card>
+
+
+    <card name="茶基本Ｇ" id="5cfc0be9-1021-415c-8ae7-da25ddd0308d">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-13" />
+    </card>
+    <card name="茶基本Ｇ" id="21291ac3-90b2-41ae-89e4-b018fda73f76">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-13" />
+    </card>
+    <card name="茶基本Ｇ" id="d06221e0-b271-46d3-bf67-8efbbe646d98">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-13" />
+    </card>
+    <card name="茶基本Ｇ" id="bcb130b5-636f-4169-81b7-b69d40a5265a">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-X2" />
+    </card>
+    <card name="茶基本Ｇ" id="0e38f436-0f47-44fc-82fd-89728ac02350">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-X2" />
+    </card>
+    <card name="茶基本Ｇ" id="a5091c19-5832-43ea-be70-bf379a51fc52">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-X4" />
+    </card>
+    <card name="茶基本Ｇ" id="344932f7-fcb0-4fb1-94f0-a11318f0959b">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="茶" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：茶 国力１を発生する。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-X4" />
+    </card>
+    <card name="モルゲンレーテ" id="4b3b5810-1a04-40fb-b704-6188eb0f3caa">
+      <property name="Cost">
+        <s value="0">0</s>
+        <s value="0">0</s>
+        <s value="0">0</s>
+      </property>
+      <property name="CMC" value="0" />
+      <property name="Color" value="紫" />
+      <property name="Type" value="Generation" />
+      <property name="Subtype">
+      </property>
+      <property name="Rarity" value="C" />
+      <property name="Rules">Cost - 0-0-0
+(自動A)：このカードは、リロール状態の場合、紫国力1を発生する。
+(常時)：<s value="T">{T}</s>《R》手札1枚を選んで自軍ハンガーに移す。
+</property>
+      <property name="Power" value="" />
+      <property name="Shoot" value="" />
+      <property name="Toughness" value="" />
+      <property name="Artist" value="******" />
+      <property name="Number" value="G-9" />
+    </card>
+  </cards>
+</set>
